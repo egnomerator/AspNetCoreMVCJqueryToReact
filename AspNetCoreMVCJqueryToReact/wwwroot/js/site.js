@@ -1,25 +1,19 @@
 ﻿$(document).ready(function () {
     table = $('#table')
         .DataTable({
+            scrollY: "525px",
+            scrollCollapse: true,
             paging: true,
             searching: true,
             info: true,
             processing: true,
             serverSide: true,
             ajax: {
-                url: "/Table/GetTheGang",
+                url: "/Table/GetTheCrew",
                 type: "POST",
                 contentType: "application/json",
                 dataType:"json",
-                //headers
                 data: function (drawCriteria) {
-                    //var data = {
-                    //    TableDraw: drawCriteria.draw,
-                    //    Start: drawCriteria.start,
-                    //    Length: drawCriteria.length,
-                    //    SearchText: ""
-                    //};
-
                     return JSON.stringify(drawCriteria);
                 },
                 dataSrc: function (json) {
@@ -31,7 +25,6 @@
             //lengthChange: false,
             //pageLength: 10,
             //language: {
-
             //},
             createdRow: function (row, data, dataIndex) { },
             columns: [
