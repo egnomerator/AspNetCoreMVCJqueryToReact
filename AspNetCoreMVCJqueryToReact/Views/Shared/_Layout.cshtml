@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <partial name="_navbar"/>
+        <partial name="_navbar" />
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -17,10 +17,12 @@
         </main>
     </div>
 
-    <partial name="_footer"/>
+    <partial name="_footer" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
