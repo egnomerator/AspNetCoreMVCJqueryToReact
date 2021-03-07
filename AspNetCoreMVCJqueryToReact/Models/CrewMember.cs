@@ -1,6 +1,6 @@
 ﻿namespace AspNetCoreMVCJqueryToReact.Models
 {
-    public class GangMember
+    public class CrewMember
     {
         public string Name { get; set; }
         public string Role { get; set; }
