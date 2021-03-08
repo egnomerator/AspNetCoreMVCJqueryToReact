@@ -6,6 +6,34 @@
 
 <h1>@Model.Title</h1>
 
+<div class="form-inline">
+    <div>Column Filters</div>
+    <select class="crew-column-filter custom-select custom-select-sm">
+        <option selected="selected" value="">Select a Name</option>
+        <option value="@Model.Names.Charlie">@Model.Names.Charlie</option>
+        <option value="@Model.Names.Mac">@Model.Names.Mac</option>
+        <option value="@Model.Names.Dennis">@Model.Names.Dennis</option>
+        <option value="@Model.Names.Dee">@Model.Names.Dee</option>
+        <option value="@Model.Names.Frank">@Model.Names.Frank</option>
+    </select>
+    <select class="crew-column-filter custom-select custom-select-sm">
+        <option selected="selected" value="">Select a Role</option>
+        <option value="@Model.Roles.Wildcard">@Model.Roles.Wildcard</option>
+        <option value="@Model.Roles.Plans">@Model.Roles.Plans</option>
+        <option value="@Model.Roles.TheLooks">@Model.Roles.TheLooks</option>
+        <option value="@Model.Roles.Jokes">@Model.Roles.Jokes</option>
+        <option value="@Model.Roles.TheMoney">@Model.Roles.TheMoney</option>
+    </select>
+    <select class="crew-column-filter custom-select custom-select-sm">
+        <option selected="selected" value="">Select a Job</option>
+        <option value="@Model.Jobs.Janitor">@Model.Jobs.Janitor</option>
+        <option value="@Model.Jobs.Security">@Model.Jobs.Security</option>
+        <option value="@Model.Jobs.BarTender">@Model.Jobs.BarTender</option>
+        <option value="@Model.Jobs.Owner">@Model.Jobs.Owner</option>
+    </select>
+    <a id="clearFilters" class="btn text-primary" style="display: none;">Clear Filters</a>
+</div>
+
 <table id="table" class="table table-striped">
     <thead>
         <tr>

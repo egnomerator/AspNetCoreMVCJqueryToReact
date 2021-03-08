@@ -1,12 +1,19 @@
 ﻿using AspNetCoreMVCJqueryToReact.Data;
+using AspNetCoreMVCJqueryToReact.Logic;
 using AspNetCoreMVCJqueryToReact.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 
 namespace AspNetCoreMVCJqueryToReact.Controllers
 {
     public class TableController : Controller
     {
+        private readonly IQueryInterpreter _queryInterpreter;
+
+        public TableController(IQueryInterpreter queryInterpreter)
+        {
+            _queryInterpreter = queryInterpreter;
+        }
+
         public IActionResult Index()
         {
             var m = new TableViewModel 
@@ -17,7 +24,10 @@ namespace AspNetCoreMVCJqueryToReact.Controllers
                     Name = "Name",
                     Role = "Role",
                     Job = "Job",
-                }
+                },
+                Names = new TableViewModel.NameFilter { },
+                Roles = new TableViewModel.RoleFilter { },
+                Jobs = new TableViewModel.JobFilter { }
             };
             return View(m);
         }
@@ -27,18 +37,15 @@ namespace AspNetCoreMVCJqueryToReact.Controllers
         {
             var theCrew = Crew.Members;
 
-            var filtered = string.IsNullOrWhiteSpace(query.Search.Value)
-                ? theCrew
-                : theCrew.Where(m => m.Name.Contains(query.Search.Value, System.StringComparison.OrdinalIgnoreCase)).ToList();
-
-            var paged = filtered.Skip(query.Start).Take(query.Length).ToList();
+            _queryInterpreter.Read(query);
+            var crew = _queryInterpreter.RunQuery(theCrew);
 
             var m = new Table
             {
                 Draw = query.Draw,
-                RecordsTotal = theCrew.Count,
-                RecordsFiltered = filtered.Count,
-                Data = paged
+                RecordsTotal = crew.TotalCount,
+                RecordsFiltered = crew.FilteredCount,
+                Data = crew.ResultSet
             };
 
             return Json(m);
