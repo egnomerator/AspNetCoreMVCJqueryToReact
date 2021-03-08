@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     crewTable = setupCrewTable();
+    renderFooter();
 });
 
 $("select").change(function () {
