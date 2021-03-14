@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     crewTable = setupCrewTable();
+    showHideClearFilters();
 
     $("select.crew-column-filter").change(function () {
         showHideClearFilters();
