@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {
     crewTable = setupCrewTable();
-    renderFooter();
-});
-
-$("select").change(function () {
     showHideClearFilters();
-    reloadTable();
-});
+    renderFooter();
+    $("select.crew-column-filter").change(function () {
+        showHideClearFilters();
+        reloadTable();
+    });
 
-$('#clearFilters').click(function () {
-    clearFilters();
-    reloadTable();
+    $('#clearFilters').click(function () {
+        clearFilters();
+        reloadTable();
+    });
 });
