@@ -9,11 +9,14 @@ function showHideClearFilters() {
 
 function getColumnFilters() {
     return {
-        Name: $('select').eq(0).val(),
-        Role: $('select').eq(1).val(),
-        Job: $('select').eq(2).val(),
+        Name: $('#filter-names select').val(),
+        Role: $('#filter-roles select').val(),
+        Job: $('#filter-jobs select').val(),
         AnyIsActive: function () {
-            return this.Name !== "" || this.Role !== "" || this.Job !== "";
+            var nameIsActive = this.Name && this.Name !== "";
+            var roleIsActive = this.Role && this.Role !== "";
+            var jobIsActive = this.Job && this.Job !== "";
+            return nameIsActive || roleIsActive || jobIsActive;
         }
     }
 }
@@ -46,4 +49,11 @@ class FooterMsgPart extends React.Component {
     render() {
         return '2021 - AspNetCoreMVCJqueryToReact'
     }
+}
+
+function ajaxRequest(httpMethod, url, onSuccess) {
+    return $.ajax({
+        type: httpMethod,
+        url: url
+    });
 }
