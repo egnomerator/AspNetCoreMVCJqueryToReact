@@ -1,5 +1,29 @@
 ﻿var crewTable;
 var emptyTableMessage;
+registeredInitializations.loadTableArea.push(loadTableArea);
+
+function loadTableArea() {
+    $.when(
+        GetFilterNames(),
+        GetFilterRoles(),
+        GetFilterJobs()
+    ).done(function (names, roles, jobs) {
+        RenderFilterNames(names[0]);
+        RenderFilterRoles(roles[0]);
+        RenderFilterJobs(jobs[0]);
+        showHideClearFilters();
+        crewTable = setupCrewTable();
+        $("select.crew-column-filter").change(function () {
+            showHideClearFilters();
+            reloadTable();
+        });
+
+        $('#clearFilters').click(function () {
+            clearFilters();
+            reloadTable();
+        });
+    });
+}
 
 function showHideClearFilters() {
     var showClearFilters = getColumnFilters().AnyIsActive();
@@ -28,32 +52,4 @@ function clearFilters() {
 
 function reloadTable() {
     crewTable.ajax.reload();
-}
-
-function renderFooter() {
-    var html =
-    '<footer class="border-top footer text-muted">'+
-        '<div class="container">'+
-            //'&copy; 2021 - AspNetCoreMVCJqueryToReact'+
-            '&copy;<span class="container"></span>'
-        '</div>'+
-    '</footer>'
-    $('#footer-container').html(html);
-    ReactDOM.render(
-        React.createElement(FooterMsgPart),
-        document.querySelector("#footer-container div.container span.container")
-    )
-}
-
-class FooterMsgPart extends React.Component {
-    render() {
-        return '2021 - AspNetCoreMVCJqueryToReact'
-    }
-}
-
-function ajaxRequest(httpMethod, url, onSuccess) {
-    return $.ajax({
-        type: httpMethod,
-        url: url
-    });
 }
