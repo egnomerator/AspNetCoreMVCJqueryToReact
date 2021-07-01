@@ -1,5 +1,6 @@
 ﻿var crewTable;
 var emptyTableMessage;
+
 registeredInitializations.loadTableArea.push(loadTableArea);
 
 function loadTableArea() {
@@ -46,7 +47,12 @@ function getColumnFilters() {
 }
 
 function clearFilters() {
-    $('select.crew-column-filter').val("");
+    var newFilterValue = "";
+
+    pubSub.publish(pubSub.eventRegister.newColFilterName, newFilterValue);
+    pubSub.publish(pubSub.eventRegister.newColFilterRole, newFilterValue);
+    pubSub.publish(pubSub.eventRegister.newColFilterJob, newFilterValue);
+
     showHideClearFilters();
 }
 
