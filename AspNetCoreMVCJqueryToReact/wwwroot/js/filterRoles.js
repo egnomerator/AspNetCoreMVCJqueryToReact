@@ -27,7 +27,7 @@ function renderRolesDropdown(roles) {
                 options: selectOptions,
                 selectedOption: "",
                 pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.newColFilterRole
+                pubSubEvent: pubSub.eventRegister.clearColFilters
             }
         ),
         document.getElementById("filter-roles")

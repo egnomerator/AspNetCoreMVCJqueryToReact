@@ -3,6 +3,7 @@
         newColFilterName: "NEW_COLUMN_FILTER_NAME",
         newColFilterRole: "NEW_COLUMN_FILTER_ROLE",
         newColFilterJob: "NEW_COLUMN_FILTER_JOB",
+        clearColFilters: "CLEAR_COLUMN_FILTERS"
     };
 
     var messageBroker = {
@@ -20,6 +21,10 @@
             },
             {
                 eventName: eventRegister.newColFilterJob,
+                eventHandlers: []
+            },
+            {
+                eventName: eventRegister.clearColFilters,
                 eventHandlers: []
             }
         ],

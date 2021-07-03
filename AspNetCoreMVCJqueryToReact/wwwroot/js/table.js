@@ -47,11 +47,7 @@ function getColumnFilters() {
 }
 
 function clearFilters() {
-    var newFilterValue = "";
-
-    pubSub.publish(pubSub.eventRegister.newColFilterName, newFilterValue);
-    pubSub.publish(pubSub.eventRegister.newColFilterRole, newFilterValue);
-    pubSub.publish(pubSub.eventRegister.newColFilterJob, newFilterValue);
+    pubSub.publish(pubSub.eventRegister.clearColFilters);
 
     showHideClearFilters();
 }

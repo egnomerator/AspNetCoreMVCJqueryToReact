@@ -26,7 +26,7 @@ function renderJobsDropdown(jobs) {
                 options: selectOptions,
                 selectedOption: "",
                 pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.newColFilterJob
+                pubSubEvent: pubSub.eventRegister.clearColFilters
             }
         ),
         document.getElementById("filter-jobs")

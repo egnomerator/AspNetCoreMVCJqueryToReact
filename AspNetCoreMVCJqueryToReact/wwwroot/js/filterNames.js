@@ -27,7 +27,7 @@ function renderNamesDropdown(names) {
                 options: selectOptions,
                 selectedOption: "",
                 pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.newColFilterName
+                pubSubEvent: pubSub.eventRegister.clearColFilters
             }
         ),
         document.getElementById("filter-names")
