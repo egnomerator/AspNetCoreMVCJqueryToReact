@@ -1,9 +1,9 @@
 ﻿var pubSub = (function () {
     var eventRegister = {
-        newColFilterName: "NEW_COLUMN_FILTER_NAME",
-        newColFilterRole: "NEW_COLUMN_FILTER_ROLE",
-        newColFilterJob: "NEW_COLUMN_FILTER_JOB",
-        clearColFilters: "CLEAR_COLUMN_FILTERS"
+        newColumnFilterName: "NEW_COLUMN_FILTER_NAME",
+        newColumnFilterRole: "NEW_COLUMN_FILTER_ROLE",
+        newColumnFilterJob: "NEW_COLUMN_FILTER_JOB",
+        clearColumnFilters: "CLEAR_COLUMN_FILTERS"
     };
 
     var messageBroker = {
@@ -12,19 +12,19 @@
         },
         events: [
             {
-                eventName: eventRegister.newColFilterName,
+                eventName: eventRegister.newColumnFilterName,
                 eventHandlers: []
             },
             {
-                eventName: eventRegister.newColFilterRole,
+                eventName: eventRegister.newColumnFilterRole,
                 eventHandlers: []
             },
             {
-                eventName: eventRegister.newColFilterJob,
+                eventName: eventRegister.newColumnFilterJob,
                 eventHandlers: []
             },
             {
-                eventName: eventRegister.clearColFilters,
+                eventName: eventRegister.clearColumnFilters,
                 eventHandlers: []
             }
         ],

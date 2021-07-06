@@ -47,7 +47,7 @@ function getColumnFilters() {
 }
 
 function clearFilters() {
-    pubSub.publish(pubSub.eventRegister.clearColFilters);
+    pubSub.publish(pubSub.eventRegister.clearColumnFilters);
 
     showHideClearFilters();
 }
