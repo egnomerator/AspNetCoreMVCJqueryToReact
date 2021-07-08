@@ -21,7 +21,9 @@ function renderNamesDropdown(names) {
                 colFilterName: "Name",
                 cssClasses: "crew-column-filter custom-select custom-select-sm",
                 options: selectOptions,
-                selectedOption: ""
+                selectedOption: "",
+                pubSubSubscriber: pubSub.subscribe,
+                pubSubEvent: pubSub.eventRegister.clearColumnFilters
             }
         ),
         document.getElementById("filter-names")

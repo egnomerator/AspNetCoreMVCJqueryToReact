@@ -3,12 +3,21 @@
         super(props);
 
         this.handleChangeSelected = this.handleChangeSelected.bind(this);
+        this.handlePubSubClearFilters = this.handlePubSubClearFilters.bind(this);
         this.state = {
             colFilterName: props.colFilterName,
             cssClasses: props.cssClasses + ' ml-1',
             options: props.options,
-            selectedOption: props.selectedOption
+            selectedOption: props.selectedOption,
+            pubSubSubscriber: props.pubSubSubscriber,
+            pubSubEvent: props.pubSubEvent
         };
+
+        this.state.pubSubSubscriber(this.state.pubSubEvent, this.handlePubSubClearFilters);
+    }
+
+    handlePubSubClearFilters() {
+        this.setState({ selectedOption: "" });
     }
 
     handleChangeSelected(event) {
