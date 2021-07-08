@@ -44,7 +44,7 @@ function getColumnFilters() {
 }
 
 function clearFilters() {
-    $('select.crew-column-filter').val("");
+    pubSub.publish(pubSub.eventRegister.clearColumnFilters);
     showHideClearFilters();
 }
 

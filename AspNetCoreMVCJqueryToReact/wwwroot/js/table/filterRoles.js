@@ -21,7 +21,9 @@ function renderRolesDropdown(roles) {
                 colFilterName: "Role",
                 cssClasses: "crew-column-filter custom-select custom-select-sm",
                 options: selectOptions,
-                selectedOption: ""
+                selectedOption: "",
+                pubSubSubscriber: pubSub.subscribe,
+                pubSubEvent: pubSub.eventRegister.clearColumnFilters
             }
         ),
         document.getElementById("filter-roles")
