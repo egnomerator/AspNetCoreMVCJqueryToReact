@@ -1,27 +1,30 @@
 ﻿$(document).ready(function () {
-    renderFooter();
-    listenAll();
+    runOrderedInitializations();
 });
 
-function listenAll() {
-    $.when(
-        GetFilterNames(),
-        GetFilterRoles(),
-        GetFilterJobs()
-    ).done(function (names, roles, jobs) {
-        RenderFilterNames(names[0]);
-        RenderFilterRoles(roles[0]);
-        RenderFilterJobs(jobs[0]);
-        showHideClearFilters();
-        crewTable = setupCrewTable();
-        $("select.crew-column-filter").change(function () {
-            showHideClearFilters();
-            reloadTable();
-        });
+function runOrderedInitializations() {
+    var orderedCallbacks = getOrderedCallbacks();
+    $.each(orderedCallbacks, function (i, f) { f(); });
+}
 
-        $('#clearFilters').click(function () {
-            clearFilters();
-            reloadTable();
-        });
+var registeredInitializations = {
+    footer: [],
+    loadTableArea: []
+}
+
+function getOrderedCallbacks() {
+    var inits = registeredInitializations;
+    var orderedInits = [];
+
+    orderedInits.push(...inits.footer);
+    orderedInits.push(...inits.loadTableArea);
+
+    return orderedInits;
+}
+
+function ajaxRequest(httpMethod, url) {
+    return $.ajax({
+        type: httpMethod,
+        url: url
     });
 }
