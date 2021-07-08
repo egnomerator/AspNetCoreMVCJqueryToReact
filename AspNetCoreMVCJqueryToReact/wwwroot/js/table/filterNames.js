@@ -11,7 +11,3 @@
     var contianer = document.getElementById("filter-names");
     contianer.innerHTML = html;
 }
-
-function GetFilterNames() {
-    return ajaxRequest("get", "/Table/GetFilterNames");
-}

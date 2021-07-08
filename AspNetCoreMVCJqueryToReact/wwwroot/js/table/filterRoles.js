@@ -11,7 +11,3 @@
     var contianer = document.getElementById("filter-roles");
     contianer.innerHTML = html;
 }
-
-function GetFilterRoles() {
-    return ajaxRequest("get", "/Table/GetFilterRoles");
-}

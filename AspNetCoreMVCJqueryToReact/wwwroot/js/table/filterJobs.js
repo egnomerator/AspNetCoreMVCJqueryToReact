@@ -10,7 +10,3 @@
     var contianer = document.getElementById("filter-jobs");
     contianer.innerHTML = html;
 }
-
-function GetFilterJobs() {
-    return ajaxRequest("get", "/Table/GetFilterjobs");
-}
