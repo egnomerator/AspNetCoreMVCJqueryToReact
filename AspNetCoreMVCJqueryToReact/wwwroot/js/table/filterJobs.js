@@ -1,12 +1,23 @@
 ﻿function RenderFilterJobs(jobs) {
-    var html =
-        '<select class="crew-column-filter custom-select custom-select-sm">' +
-        '<option selected="selected" value="">Select a Job</option>' +
-        '<option value="' + jobs.janitor + '">' + jobs.janitor + '</option>' +
-        '<option value="' + jobs.security + '">' + jobs.security + '</option>' +
-        '<option value="' + jobs.barTender + '">' + jobs.barTender + '</option>' +
-        '<option value="' + jobs.owner + '">' + jobs.owner + '</option>' +
-        '</select>';
-    var contianer = document.getElementById("filter-jobs");
-    contianer.innerHTML = html;
+    renderJobsDropdown(jobs)
+}
+
+function renderJobsDropdown(jobs) {
+    var selectOptions = {
+        o: [
+            { value: '', label: 'Select a Job', selected: 'selected="selected"' },
+            { value: jobs.janitor, label: jobs.janitor, selected: '' },
+            { value: jobs.security, label: jobs.security, selected: '' },
+            { value: jobs.barTender, label: jobs.barTender, selected: '' },
+            { value: jobs.owner, label: jobs.owner, selected: '' }
+        ]
+    }
+
+    ReactDOM.render(
+        React.createElement(
+            SelectSimple,
+            { colFilterName: "Job", cssClasses: "crew-column-filter custom-select custom-select-sm", options: selectOptions }
+        ),
+        document.getElementById("filter-jobs")
+    )
 }
