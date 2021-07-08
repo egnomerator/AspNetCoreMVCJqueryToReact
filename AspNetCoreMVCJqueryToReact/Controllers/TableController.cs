@@ -32,6 +32,27 @@ namespace AspNetCoreMVCJqueryToReact.Controllers
             return View(m);
         }
 
+        public IActionResult GetFilterNames()
+        {
+            var m = new TableViewModel.NameFilter { };
+
+            return Json(m);
+        }
+
+        public IActionResult GetFilterRoles()
+        {
+            var m = new TableViewModel.RoleFilter { };
+
+            return Json(m);
+        }
+
+        public IActionResult GetFilterJobs()
+        {
+            var m = new TableViewModel.JobFilter { };
+
+            return Json(m);
+        }
+
         [HttpPost]
         public IActionResult GetTheCrew([FromBody] Query query)
         {
