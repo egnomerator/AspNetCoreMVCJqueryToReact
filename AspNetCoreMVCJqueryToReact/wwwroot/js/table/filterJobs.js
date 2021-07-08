@@ -5,18 +5,23 @@
 function renderJobsDropdown(jobs) {
     var selectOptions = {
         o: [
-            { value: '', label: 'Select a Job', selected: 'selected="selected"' },
-            { value: jobs.janitor, label: jobs.janitor, selected: '' },
-            { value: jobs.security, label: jobs.security, selected: '' },
-            { value: jobs.barTender, label: jobs.barTender, selected: '' },
-            { value: jobs.owner, label: jobs.owner, selected: '' }
+            { value: '', label: 'Select a Job' },
+            { value: jobs.janitor, label: jobs.janitor },
+            { value: jobs.security, label: jobs.security },
+            { value: jobs.barTender, label: jobs.barTender },
+            { value: jobs.owner, label: jobs.owner }
         ]
     }
 
     ReactDOM.render(
         React.createElement(
             SelectSimple,
-            { colFilterName: "Job", cssClasses: "crew-column-filter custom-select custom-select-sm", options: selectOptions }
+            {
+                colFilterName: "Job",
+                cssClasses: "crew-column-filter custom-select custom-select-sm",
+                options: selectOptions,
+                selectedOption: ""
+            }
         ),
         document.getElementById("filter-jobs")
     )
