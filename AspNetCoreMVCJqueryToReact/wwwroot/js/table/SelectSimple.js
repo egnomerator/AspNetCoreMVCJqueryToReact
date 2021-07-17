@@ -7,10 +7,17 @@
         this.state = {
             selectedOption: props.selectedOption
         };
+
+        this.unsubscribers = [];
     }
 
     componentDidMount() {
-        this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
+        var unsubscriber = this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
+        this.unsubscribers.push(unsubscriber);
+    }
+
+    componentWillUnmount() {
+        this.unsubscribers.map((unsubscribe, i) => { unsubscribe(); });
     }
 
     handlePubSubClearFilters() {
