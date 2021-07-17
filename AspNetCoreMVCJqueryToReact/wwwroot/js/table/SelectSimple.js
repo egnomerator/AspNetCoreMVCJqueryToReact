@@ -7,7 +7,9 @@
         this.state = {
             selectedOption: props.selectedOption
         };
+    }
 
+    componentDidMount() {
         this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
     }
 
