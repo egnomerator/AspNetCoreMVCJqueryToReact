@@ -16,6 +16,12 @@
         subscribe: function (eventName, handler) {
             var event = this.findEvent(eventName);
             event.eventHandlers.push(handler);
+            var unsubscriber = function () {
+                event.eventHandlers = event.eventHandlers.filter((h) => {
+                    return h !== handler;
+                });
+            }
+            return unsubscriber;
         },
         publish: function (eventName, data) {
             var event = this.findEvent(eventName);
@@ -25,7 +31,7 @@
 
     return {
         eventRegister: eventRegister,
-        subscribe: function (eventName, subscriber) { messageBroker.subscribe(eventName, subscriber); },
+        subscribe: function (eventName, subscriber) { return messageBroker.subscribe(eventName, subscriber); },
         publish: function (eventName, data) { messageBroker.publish(eventName, data); }
     }
 })();
