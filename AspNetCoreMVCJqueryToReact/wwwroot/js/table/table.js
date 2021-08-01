@@ -9,6 +9,7 @@ function loadTableArea() {
         RenderFilterNames(filterOptions.names);
         RenderFilterRoles(filterOptions.roles);
         RenderFilterJobs(filterOptions.jobs);
+        RenderClearFilters();
         showHideClearFilters();
         crewTable = setupCrewTable();
         $("select.crew-column-filter").change(function () {
