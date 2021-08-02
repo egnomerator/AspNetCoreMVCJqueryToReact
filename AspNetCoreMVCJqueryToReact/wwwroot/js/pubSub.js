@@ -1,6 +1,7 @@
 ﻿var pubSub = (function () {
     var eventRegister = {
-        clearColumnFilters: "CLEAR_COLUMN_FILTERS"
+        clearColumnFilters: "CLEAR_COLUMN_FILTERS",
+        columnFiltersChanged: "COLUMN_FILTERS_CHANGED"
     };
 
     var messageBroker = {
@@ -10,6 +11,10 @@
         events: [
             {
                 eventName: eventRegister.clearColumnFilters,
+                eventHandlers: []
+            },
+            {
+                eventName: eventRegister.columnFiltersChanged,
                 eventHandlers: []
             }
         ],

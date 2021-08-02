@@ -10,7 +10,6 @@ function loadTableArea() {
         RenderFilterRoles(filterOptions.roles);
         RenderFilterJobs(filterOptions.jobs);
         RenderClearFilters();
-        showHideClearFilters();
         crewTable = setupCrewTable();
         $("select.crew-column-filter").change(function () {
             showHideClearFilters();
@@ -26,8 +25,7 @@ function loadTableArea() {
 
 function showHideClearFilters() {
     var showClearFilters = getColumnFilters().AnyIsActive();
-    if (showClearFilters) $('#clearFilters').show();
-    if (!showClearFilters) $('#clearFilters').hide();
+    pubSub.publish(pubSub.eventRegister.columnFiltersChanged, showClearFilters);
 }
 
 function getColumnFilters() {
