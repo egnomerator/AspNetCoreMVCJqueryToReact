@@ -6,7 +6,7 @@
     getClearFiltersReact() {
         return React.createElement(
             "a",
-            { className: this.props.cssClasses },
+            { className: this.props.cssClasses, onClick: this.props.onClick },
             this.props.label);
     }
 

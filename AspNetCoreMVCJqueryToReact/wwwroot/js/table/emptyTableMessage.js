@@ -1,11 +1,11 @@
 ﻿emptyTableMessage = (function(){
 
-    function renderMessage(columnFilters, clearFiltersCallback, reloadTableCallback) {
+    function renderMessage(columnFilters, clearFiltersCallback) {
         var currentColFilters = new currentColumnFilters(columnFilters);
-        renderMessageElement(currentColFilters, clearFiltersCallback, reloadTableCallback);
+        renderMessageElement(currentColFilters, clearFiltersCallback);
     }
 
-    function renderMessageElement(columnFilters, clearFiltersCallback, reloadTableCallback) {
+    function renderMessageElement(columnFilters, clearFiltersCallback) {
         var colFiltersMsg = getFiltersList(columnFilters);
         var msg = document.createElement('span');
         msg.className = "";
@@ -15,19 +15,18 @@
             return;
         }
 
-        var a = getAnchor(clearFiltersCallback, reloadTableCallback);
+        var a = getAnchor(clearFiltersCallback);
         msg.innerHTML = "Column Filter(s) currently set - " + colFiltersMsg + " - ";
         msg.appendChild(a);
         messageElement = msg;
     }
 
-    function getAnchor(clearFiltersCallback, reloadTableCallback) {
+    function getAnchor(clearFiltersCallback) {
         var a = document.createElement('a');
         a.className = "text-primary";
         a.innerHTML = "click here to clear column filters";
         a.onclick = function () {
             clearFiltersCallback();
-            reloadTableCallback();
         };
 
         return a;
@@ -56,9 +55,9 @@
     var messageElement = null;
 
     return {
-        render: function (columnFilters, clearFiltersCallback, reloadTableCallback) {
+        render: function (columnFilters, clearFiltersCallback) {
             clearMessage();
-            renderMessage(columnFilters, clearFiltersCallback, reloadTableCallback);
+            renderMessage(columnFilters, clearFiltersCallback);
         },
         get: function () { return messageElement; },
         clear: function () { clearMessage(); }

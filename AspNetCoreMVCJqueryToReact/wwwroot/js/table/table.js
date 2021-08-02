@@ -7,24 +7,9 @@ function loadTableArea() {
         ajaxRequest("get", "/Table/GetColumnFilterOptions")
     ).done(function (filterOptions) {
         RenderColumnFilters(filterOptions);
-        showHideClearFilters();
         crewTable = setupCrewTable();
-        $("select.crew-column-filter").change(function () {
-            showHideClearFilters();
-            reloadTable();
-        });
-
-        $('#clearFilters').click(function () {
-            clearFilters();
-            reloadTable();
-        });
+        pubSub.subscribe(pubSub.eventRegister.columnFiltersChanged, reloadTable);
     });
-}
-
-function showHideClearFilters() {
-    var showClearFilters = getColumnFilters().AnyIsActive();
-    if (showClearFilters) $('#clearFilters').show();
-    if (!showClearFilters) $('#clearFilters').hide();
 }
 
 function getColumnFilters() {
@@ -43,7 +28,6 @@ function getColumnFilters() {
 
 function clearFilters() {
     pubSub.publish(pubSub.eventRegister.clearColumnFilters);
-    showHideClearFilters();
 }
 
 function reloadTable() {

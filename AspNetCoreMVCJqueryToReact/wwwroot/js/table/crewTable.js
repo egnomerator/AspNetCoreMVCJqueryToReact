@@ -2,7 +2,7 @@
     return $('#table')
         .on('xhr.dt', function (e, settings, json, xhr) {
             emptyTableMessage.clear();
-            if (json.recordsFiltered < 1) emptyTableMessage.render(getColumnFilters(), clearFilters, reloadTable);
+            if (json.recordsFiltered < 1) emptyTableMessage.render(getColumnFilters(), clearFilters);
         })
         .DataTable({
             scrollY: "450px",

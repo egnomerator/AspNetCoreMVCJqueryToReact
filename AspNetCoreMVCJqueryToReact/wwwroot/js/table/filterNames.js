@@ -1,5 +1,12 @@
-﻿function CreateFilterNames(names) {
-    var selectOptions = {
+﻿function CreateFilterNames(props) {
+    return React.createElement(
+        SelectSimple,
+        props
+    );
+}
+
+function GetFilterNamesOptions(names) {
+    return {
         o: [
             { value: '', label: 'Select a Name' },
             { value: names.charlie, label: names.charlie },
@@ -8,17 +15,5 @@
             { value: names.dee, label: names.dee },
             { value: names.frank, label: names.frank }
         ]
-    }
-
-    return React.createElement(
-        SelectSimple,
-        {
-            colFilterName: "Name",
-            cssClasses: "crew-column-filter custom-select custom-select-sm",
-            options: selectOptions,
-            selectedOption: "",
-            pubSubSubscriber: pubSub.subscribe,
-            pubSubEvent: pubSub.eventRegister.clearColumnFilters
-        }
-    );
+    };
 }

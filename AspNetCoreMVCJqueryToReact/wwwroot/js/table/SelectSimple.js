@@ -1,31 +1,6 @@
 ﻿class SelectSimple extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleChangeSelected = this.handleChangeSelected.bind(this);
-        this.handlePubSubClearFilters = this.handlePubSubClearFilters.bind(this);
-        this.state = {
-            selectedOption: props.selectedOption
-        };
-
-        this.unsubscribers = [];
-    }
-
-    componentDidMount() {
-        var unsubscriber = this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
-        this.unsubscribers.push(unsubscriber);
-    }
-
-    componentWillUnmount() {
-        this.unsubscribers.map((unsubscribe, i) => { unsubscribe(); });
-    }
-
-    handlePubSubClearFilters() {
-        this.setState({ selectedOption: "" });
-    }
-
-    handleChangeSelected(event) {
-        this.setState({ selectedOption: event.target.value });
     }
 
     getSelectReact() {
@@ -34,7 +9,7 @@
             selectOptions.push(
                 React.createElement("option", { value: option.value, key: 'col-filter-' + this.props.colFilterName + '-' + i }, option.label)));
 
-        return React.createElement("select", { className: this.props.cssClasses + ' ml-1', value: this.state.selectedOption, onChange: this.handleChangeSelected }, selectOptions);
+        return React.createElement("select", { className: this.props.cssClasses + ' ml-1', value: this.props.selectedOption, onChange: this.props.onChange }, selectOptions);
     }
 
     render() {

@@ -1,5 +1,12 @@
-﻿function CreateFilterRoles(roles) {
-    var selectOptions = {
+﻿function CreateFilterRoles(props) {
+    return React.createElement(
+        SelectSimple,
+        props
+    );
+}
+
+function GetFilterRolesOptions(roles) {
+    return {
         o: [
             { value: '', label: 'Select a Role' },
             { value: roles.wildcard, label: roles.wildcard },
@@ -8,17 +15,5 @@
             { value: roles.jokes, label: roles.jokes },
             { value: roles.theMoney, label: roles.theMoney }
         ]
-    }
-
-    return React.createElement(
-        SelectSimple,
-        {
-            colFilterName: "Role",
-            cssClasses: "crew-column-filter custom-select custom-select-sm",
-            options: selectOptions,
-            selectedOption: "",
-            pubSubSubscriber: pubSub.subscribe,
-            pubSubEvent: pubSub.eventRegister.clearColumnFilters
-        }
-    );
+    };
 }
