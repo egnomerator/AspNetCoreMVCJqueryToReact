@@ -1,8 +1,4 @@
-﻿function RenderFilterNames(names) {
-    renderNamesDropdown(names);
-}
-
-function renderNamesDropdown(names) {
+﻿function CreateFilterNames(names) {
     var selectOptions = {
         o: [
             { value: '', label: 'Select a Name' },
@@ -14,18 +10,15 @@ function renderNamesDropdown(names) {
         ]
     }
 
-    ReactDOM.render(
-        React.createElement(
-            SelectSimple,
-            {
-                colFilterName: "Name",
-                cssClasses: "crew-column-filter custom-select custom-select-sm",
-                options: selectOptions,
-                selectedOption: "",
-                pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.clearColumnFilters
-            }
-        ),
-        document.getElementById("filter-names")
-    )
+    return React.createElement(
+        SelectSimple,
+        {
+            colFilterName: "Name",
+            cssClasses: "crew-column-filter custom-select custom-select-sm",
+            options: selectOptions,
+            selectedOption: "",
+            pubSubSubscriber: pubSub.subscribe,
+            pubSubEvent: pubSub.eventRegister.clearColumnFilters
+        }
+    );
 }

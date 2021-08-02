@@ -6,10 +6,7 @@ function loadTableArea() {
     $.when(
         ajaxRequest("get", "/Table/GetColumnFilterOptions")
     ).done(function (filterOptions) {
-        RenderFilterNames(filterOptions.names);
-        RenderFilterRoles(filterOptions.roles);
-        RenderFilterJobs(filterOptions.jobs);
-        RenderClearFilters();
+        RenderColumnFilters(filterOptions);
         showHideClearFilters();
         crewTable = setupCrewTable();
         $("select.crew-column-filter").change(function () {

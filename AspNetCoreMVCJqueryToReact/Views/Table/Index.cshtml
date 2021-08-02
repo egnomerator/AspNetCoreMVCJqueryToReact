@@ -6,13 +6,7 @@
 
 <h1>@Model.Title</h1>
 
-<div class="form-inline">
-    <div>Column Filters</div>
-    <div id="filter-names"></div>
-    <div id="filter-roles"></div>
-    <div id="filter-jobs"></div>
-    <div id="clearFilters">Clear Filters</div>
-</div>
+<div id="columnFiltersContainer"></div>
 
 <table id="table" class="table table-striped">
     <thead>
@@ -33,5 +27,7 @@
     <script src="~/js/table/SelectSimple.js" asp-append-version="true"></script>
     <script src="~/js/table/filtersClear.js" asp-append-version="true"></script>
     <script src="~/js/table/ClearFilters.js" asp-append-version="true"></script>
+    <script src="~/js/table/columnFiltersArea.js" asp-append-version="true"></script>
+    <script src="~/js/table/ColumnFilters.js" asp-append-version="true"></script>
     <script src="~/js/table/table.js" asp-append-version="true"></script>
 }

@@ -1,8 +1,4 @@
-﻿function RenderFilterJobs(jobs) {
-    renderJobsDropdown(jobs)
-}
-
-function renderJobsDropdown(jobs) {
+﻿function CreateFilterJobs(jobs) {
     var selectOptions = {
         o: [
             { value: '', label: 'Select a Job' },
@@ -13,18 +9,15 @@ function renderJobsDropdown(jobs) {
         ]
     }
 
-    ReactDOM.render(
-        React.createElement(
-            SelectSimple,
-            {
-                colFilterName: "Job",
-                cssClasses: "crew-column-filter custom-select custom-select-sm",
-                options: selectOptions,
-                selectedOption: "",
-                pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.clearColumnFilters
-            }
-        ),
-        document.getElementById("filter-jobs")
-    )
+    return React.createElement(
+        SelectSimple,
+        {
+            colFilterName: "Job",
+            cssClasses: "crew-column-filter custom-select custom-select-sm",
+            options: selectOptions,
+            selectedOption: "",
+            pubSubSubscriber: pubSub.subscribe,
+            pubSubEvent: pubSub.eventRegister.clearColumnFilters
+        }
+    );
 }

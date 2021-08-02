@@ -1,8 +1,4 @@
-﻿function RenderFilterRoles(roles) {
-    renderRolesDropdown(roles);
-}
-
-function renderRolesDropdown(roles) {
+﻿function CreateFilterRoles(roles) {
     var selectOptions = {
         o: [
             { value: '', label: 'Select a Role' },
@@ -14,18 +10,15 @@ function renderRolesDropdown(roles) {
         ]
     }
 
-    ReactDOM.render(
-        React.createElement(
-            SelectSimple,
-            {
-                colFilterName: "Role",
-                cssClasses: "crew-column-filter custom-select custom-select-sm",
-                options: selectOptions,
-                selectedOption: "",
-                pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.clearColumnFilters
-            }
-        ),
-        document.getElementById("filter-roles")
-    )
+    return React.createElement(
+        SelectSimple,
+        {
+            colFilterName: "Role",
+            cssClasses: "crew-column-filter custom-select custom-select-sm",
+            options: selectOptions,
+            selectedOption: "",
+            pubSubSubscriber: pubSub.subscribe,
+            pubSubEvent: pubSub.eventRegister.clearColumnFilters
+        }
+    );
 }
