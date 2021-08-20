@@ -12,20 +12,15 @@ function renderNamesDropdown(names) {
             { value: names.dee, label: names.dee },
             { value: names.frank, label: names.frank }
         ]
-    }
-
-    ReactDOM.render(
-        React.createElement(
-            SelectSimple,
-            {
-                colFilterName: "Name",
-                cssClasses: "crew-column-filter custom-select custom-select-sm",
-                options: selectOptions,
-                selectedOption: "",
-                pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.clearColumnFilters
-            }
-        ),
-        document.getElementById("filter-names")
-    )
+    };
+    var props = {
+        colFilterName: "Name",
+        cssClasses: "crew-column-filter custom-select custom-select-sm",
+        options: selectOptions,
+        selectedOption: "",
+        pubSubSubscriber: pubSub.subscribe,
+        pubSubEvent: pubSub.eventRegister.clearColumnFilters
+    };
+    var container = document.getElementById("filter-names");
+    ComponentApi.renderSelect(container, props);
 }

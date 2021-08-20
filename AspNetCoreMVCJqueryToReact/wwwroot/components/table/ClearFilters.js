@@ -1,4 +1,6 @@
-﻿class ClearFilters extends React.Component {
+﻿import React from "react";
+
+export default class ClearFilters extends React.Component {
     constructor(props) {
         super(props);
 
