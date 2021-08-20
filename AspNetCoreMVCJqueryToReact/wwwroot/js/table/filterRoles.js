@@ -12,20 +12,15 @@ function renderRolesDropdown(roles) {
             { value: roles.jokes, label: roles.jokes },
             { value: roles.theMoney, label: roles.theMoney }
         ]
-    }
-
-    ReactDOM.render(
-        React.createElement(
-            SelectSimple,
-            {
-                colFilterName: "Role",
-                cssClasses: "crew-column-filter custom-select custom-select-sm",
-                options: selectOptions,
-                selectedOption: "",
-                pubSubSubscriber: pubSub.subscribe,
-                pubSubEvent: pubSub.eventRegister.clearColumnFilters
-            }
-        ),
-        document.getElementById("filter-roles")
-    )
+    };
+    var props = {
+        colFilterName: "Role",
+        cssClasses: "crew-column-filter custom-select custom-select-sm",
+        options: selectOptions,
+        selectedOption: "",
+        pubSubSubscriber: pubSub.subscribe,
+        pubSubEvent: pubSub.eventRegister.clearColumnFilters
+    };
+    var container = document.getElementById("filter-roles");
+    ComponentApi.renderSelect(container, props);
 }

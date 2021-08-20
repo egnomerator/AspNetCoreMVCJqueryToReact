@@ -9,14 +9,6 @@ function renderFooter() {
     '</div>' +
         '</footer>'
     $('#footer-container').html(html);
-    ReactDOM.render(
-        React.createElement(FooterMsgPart),
-        document.querySelector("#footer-container div.container span.container")
-    )
-}
-
-class FooterMsgPart extends React.Component {
-    render() {
-        return '2021 - AspNetCoreMVCJqueryToReact'
-    }
+    var container = document.querySelector("#footer-container div.container span.container");
+    ComponentApi.renderFooter(container);
 }

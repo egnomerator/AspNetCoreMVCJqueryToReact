@@ -1,4 +1,6 @@
-﻿class SelectSimple extends React.Component {
+﻿import React from "react";
+
+export default class SelectSimple extends React.Component {
     constructor(props) {
         super(props);
 
