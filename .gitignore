@@ -159,3 +159,6 @@ UpgradeLog*.htm
 .ntvs_analysis.dat
 node_modules/
 *.msi
+
+# library dist
+**/wwwroot/components/dist/
