@@ -161,4 +161,4 @@ node_modules/
 *.msi
 
 # library dist
-**/wwwroot/components/dist/
+**/wwwroot/dist/

@@ -11,12 +11,23 @@ module.exports = (env, argv) => {
         },
         output: {
             clean: true,
-            path: path.resolve(appPath, "wwwroot/components/dist"),
-            filename: "[name].js?[fullhash]",
-            publicPath: "~/wwwroot/components/dist/",
+            path: path.resolve(appPath, "wwwroot/dist"),
+            filename: "[name].js",
+            publicPath: "~/wwwroot/dist/",
             library: {
                 name: "ComponentApi",
                 type: "var"
+            }
+        },
+        optimization: {
+            splitChunks: {
+                chunks: "all",
+                cacheGroups: {
+                    vendors: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: "vendors"
+                    }
+                }
             }
         },
         module: {
