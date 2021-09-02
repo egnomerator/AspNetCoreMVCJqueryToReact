@@ -16,8 +16,8 @@ function getOrderedCallbacks() {
     var inits = registeredInitializations;
     var orderedInits = [];
 
-    orderedInits.push(...inits.footer);
-    orderedInits.push(...inits.loadTableArea);
+    ClientApp.Shared.pushArrayInto(inits.footer, orderedInits);
+    ClientApp.Shared.pushArrayInto(inits.loadTableArea, orderedInits);
 
     return orderedInits;
 }
