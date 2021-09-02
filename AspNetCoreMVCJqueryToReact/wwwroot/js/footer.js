@@ -10,5 +10,5 @@ function renderFooter() {
         '</footer>'
     $('#footer-container').html(html);
     var container = document.querySelector("#footer-container div.container span.container");
-    ComponentApi.renderFooter(container);
+    ClientApp.Components.renderFooter(container);
 }

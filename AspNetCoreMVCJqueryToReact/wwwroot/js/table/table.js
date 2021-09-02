@@ -25,7 +25,7 @@ function loadTableArea() {
 
 function showHideClearFilters() {
     var showClearFilters = getColumnFilters().AnyIsActive();
-    pubSub.publish(pubSub.eventRegister.columnFiltersChanged, showClearFilters);
+    ClientApp.PubSub.publish(ClientApp.PubSub.eventRegister.columnFiltersChanged, showClearFilters);
 }
 
 function getColumnFilters() {
@@ -43,7 +43,7 @@ function getColumnFilters() {
 }
 
 function clearFilters() {
-    pubSub.publish(pubSub.eventRegister.clearColumnFilters);
+    ClientApp.PubSub.publish(ClientApp.PubSub.eventRegister.clearColumnFilters);
     showHideClearFilters();
 }
 

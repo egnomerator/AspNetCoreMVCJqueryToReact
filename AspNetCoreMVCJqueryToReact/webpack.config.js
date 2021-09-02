@@ -6,16 +6,16 @@ module.exports = (env, argv) => {
         context: appPath,
         entry: {
             bundle: [
-                "./wwwroot/components/API.js"
+                "./wwwroot/app/src/API.js"
             ]
         },
         output: {
             clean: true,
-            path: path.resolve(appPath, "wwwroot/dist"),
+            path: path.resolve(appPath, "wwwroot/app/dist"),
             filename: "[name].js",
-            publicPath: "~/wwwroot/dist/",
+            publicPath: "~/wwwroot/app/dist/",
             library: {
-                name: "ComponentApi",
+                name: "ClientApp",
                 type: "var"
             }
         },

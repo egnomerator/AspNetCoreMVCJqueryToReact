@@ -7,9 +7,9 @@ function renderClearFiltersButton() {
         cssClasses: "btn text-primary p-0 ml-3",
         label: "Clear Filters",
         showClearFilters: false,
-        pubSubSubscriber: pubSub.subscribe,
-        pubSubEvent: pubSub.eventRegister.columnFiltersChanged
+        pubSubSubscriber: ClientApp.PubSub.subscribe,
+        pubSubEvent: ClientApp.PubSub.eventRegister.columnFiltersChanged
     };
     var container = document.getElementById("clearFilters");
-    ComponentApi.renderClearFiltersButton(container, props);
+    ClientApp.Components.renderClearFiltersButton(container, props);
 }

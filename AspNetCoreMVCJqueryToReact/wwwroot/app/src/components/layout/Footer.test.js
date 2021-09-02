@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import ReactTestRenderer from "react-test-renderer";
-import Footer from "../layout/Footer";
+import Footer from "./Footer";
 
 describe("Footer", () => {
     it("should render as footer string value", () => {

@@ -18,9 +18,9 @@ function renderNamesDropdown(names) {
         cssClasses: "crew-column-filter custom-select custom-select-sm",
         options: selectOptions,
         selectedOption: "",
-        pubSubSubscriber: pubSub.subscribe,
-        pubSubEvent: pubSub.eventRegister.clearColumnFilters
+        pubSubSubscriber: ClientApp.PubSub.subscribe,
+        pubSubEvent: ClientApp.PubSub.eventRegister.clearColumnFilters
     };
     var container = document.getElementById("filter-names");
-    ComponentApi.renderSelect(container, props);
+    ClientApp.Components.renderSelect(container, props);
 }
