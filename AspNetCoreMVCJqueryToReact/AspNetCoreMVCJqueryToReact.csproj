@@ -5,11 +5,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\app\src\components\api.d.ts" />
+    <Content Remove="wwwroot\app\src\pubSub\pubSub.d.ts" />
+    <Content Remove="wwwroot\app\src\shared\api.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\app\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\app\src\components\api.d.ts" />
+    <TypeScriptCompile Include="wwwroot\app\src\pubSub\pubSub.d.ts" />
+    <TypeScriptCompile Include="wwwroot\app\src\shared\api.d.ts" />
   </ItemGroup>
 
 </Project>
