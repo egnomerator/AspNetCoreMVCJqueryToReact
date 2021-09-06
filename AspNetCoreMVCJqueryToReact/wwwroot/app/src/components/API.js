@@ -5,14 +5,6 @@ import SelectSimple from "./table/SelectSimple";
 import ClearFilters from "./table/ClearFilters";
 
 function renderFooter(container) {
-    var html =
-        '<footer class="border-top footer text-muted">' +
-        '<div class="container">' +
-        //'&copy; 2021 - AspNetCoreMVCJqueryToReact'+
-        '&copy;<span class="container"></span>'
-    '</div>' +
-        '</footer>'
-    $('#footer-container').html(html);
     ReactDOM.render(
         React.createElement(FooterMsgPart),
         container
