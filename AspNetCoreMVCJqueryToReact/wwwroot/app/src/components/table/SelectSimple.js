@@ -33,10 +33,9 @@ export default class SelectSimple extends React.Component {
     getSelectReact() {
         var selectOptions = [];
         this.props.options.o.map((option, i) =>
-            selectOptions.push(
-                React.createElement("option", { value: option.value, key: 'col-filter-' + this.props.colFilterName + '-' + i }, option.label)));
+            selectOptions.push(<option key={'col-filter-' + this.props.colFilterName + '-' + i} value={option.value}>{option.label}</option>));
 
-        return React.createElement("select", { className: this.props.cssClasses + ' ml-1', value: this.state.selectedOption, onChange: this.handleChangeSelected }, selectOptions);
+        return <select className={this.props.cssClasses + ' ml-1'} value={this.state.selectedOption} onChange={this.handleChangeSelected}>{selectOptions}</select>;
     }
 
     render() {
