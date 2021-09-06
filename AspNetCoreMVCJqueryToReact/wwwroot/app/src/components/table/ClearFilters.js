@@ -29,10 +29,7 @@ export default class ClearFilters extends React.Component {
 
         if (!this.state.showClearFilters) return null;
 
-        return React.createElement(
-            "a",
-            { className: this.props.cssClasses },
-            this.props.label);
+        return <a className={this.props.cssClasses}>{this.props.label}</a>;
     }
 
     render() {

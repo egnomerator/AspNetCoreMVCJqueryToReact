@@ -33,13 +33,16 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.(js)$/,
+                    test: /\.(js)x?$/,
                     exclude: /node_modules/,
                     use: {
                         loader: "babel-loader"
                     }
                 }
             ]
+        },
+        resolve: {
+            extensions: [".js", ".jsx"]
         }
     };
 
