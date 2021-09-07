@@ -7,7 +7,7 @@ describe("Footer", () => {
         const expectedTag = "span";
         const expectedText = "2021 - AspNetCoreMVCJqueryToReact";
 
-        const footer = ReactTestRenderer.create(React.createElement(Footer));
+        const footer = ReactTestRenderer.create(<Footer/>);
         const footerValue = footer.toJSON();
 
         expect(footerValue.type).toBe(expectedTag);
