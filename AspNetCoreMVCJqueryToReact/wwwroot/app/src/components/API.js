@@ -6,21 +6,21 @@ import ClearFilters from "./table/ClearFilters";
 
 function renderFooter(container) {
     ReactDOM.render(
-        React.createElement(FooterMsgPart),
+        <FooterMsgPart/>,
         container
     )
 }
 
 function renderSelect(container, props) {
     ReactDOM.render(
-        React.createElement(SelectSimple, props),
+        <SelectSimple {...props}/>,
         container
     )
 }
 
 function renderClearFiltersButton(container, props) {
     ReactDOM.render(
-        React.createElement(ClearFilters, props),
+        <ClearFilters {...props}/>,
         container
     )
 }
