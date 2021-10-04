@@ -21,5 +21,13 @@ function renderJobsDropdown(jobs) {
         pubSubEvent: ClientApp.PubSub.eventRegister.clearColumnFilters
     };
     var container = document.getElementById("filter-jobs");
-    ClientApp.Components.renderSelect(container, props);
+    
+    ClientApp.Components.renderSelect(
+        container,
+        props.colFilterName,
+        props.cssClasses,
+        props.options,
+        props.selectedOption,
+        props.pubSubSubscriber,
+        props.pubSubEvent);
 }

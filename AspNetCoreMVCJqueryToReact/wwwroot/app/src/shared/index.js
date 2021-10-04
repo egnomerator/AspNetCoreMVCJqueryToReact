@@ -2,8 +2,8 @@
     targetArray.push(...sourceArray);
 }
 
-var sharedAPI = {
+var Shared = {
     pushArrayInto: function (sourceArray, targetArray) { pushArrayInto(sourceArray, targetArray); }
 };
 
-export default sharedAPI;
+export default Shared;

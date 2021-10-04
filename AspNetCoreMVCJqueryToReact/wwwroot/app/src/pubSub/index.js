@@ -33,10 +33,10 @@ var messageBroker = {
     }
 };
 
-var pubSub = {
+var PubSub = {
     eventRegister: eventRegister,
     subscribe: function (eventName, subscriber) { return messageBroker.subscribe(eventName, subscriber); },
     publish: function (eventName, data) { messageBroker.publish(eventName, data); }
 };
 
-export default pubSub;
+export default PubSub;
