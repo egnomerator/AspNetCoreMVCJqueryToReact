@@ -2,26 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="wwwroot\app\src\components\api.d.ts" />
-    <Content Remove="wwwroot\app\src\pubSub\pubSub.d.ts" />
-    <Content Remove="wwwroot\app\src\shared\api.d.ts" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\app\dist\" />
-  </ItemGroup>
+  <Target Name="NpmCI" Inputs="package.json" Outputs="node_modules/.install-stamp">
+    <Exec Command="npm ci" />
+    <!-- Write the stamp file, so incremental builds work -->
+    <Touch Files="node_modules/.install-stamp" AlwaysCreate="true" />
+  </Target>
 
-  <ItemGroup>
-    <TypeScriptCompile Include="wwwroot\app\src\components\api.d.ts" />
-    <TypeScriptCompile Include="wwwroot\app\src\pubSub\pubSub.d.ts" />
-    <TypeScriptCompile Include="wwwroot\app\src\shared\api.d.ts" />
-  </ItemGroup>
+  <Target Name="NpmRunBuild" DependsOnTargets="NpmCI" BeforeTargets="BeforeBuild">
+    <Exec Command="npm run dev" Condition="'$(Configuration)'!='Release'" />
+    <Exec Command="npm run prod" Condition="'$(Configuration)'=='Release'" />
+  </Target>
 
 </Project>

@@ -5,15 +5,13 @@ module.exports = (env, argv) => {
     var config = {
         context: appPath,
         entry: {
-            bundle: [
-                "./wwwroot/app/src/API.js"
-            ]
+            bundle: [ "./wwwroot/app/src/index.js" ]
         },
         output: {
             clean: true,
-            path: path.resolve(appPath, "wwwroot/app/dist"),
+            path: path.resolve(appPath, "wwwroot/app/dist/bundle"),
             filename: "[name].js",
-            publicPath: "~/wwwroot/app/dist/",
+            publicPath: "~/wwwroot/app/dist/bundle/",
             library: {
                 name: "ClientApp",
                 type: "var"
@@ -33,7 +31,7 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.(js)x?$/,
+                    test: /\.(ts|js)x?$/,
                     exclude: /node_modules/,
                     use: {
                         loader: "babel-loader"
@@ -42,7 +40,7 @@ module.exports = (env, argv) => {
             ]
         },
         resolve: {
-            extensions: [".js", ".jsx"]
+            extensions: [".js", ".jsx", ".ts", ".tsx"]
         }
     };
 

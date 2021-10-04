@@ -1,7 +1,22 @@
-﻿import React from "react";
+﻿import * as React from "react";
 
-export default class SelectSimple extends React.Component {
-    constructor(props) {
+export interface SelectSimpleProps {
+    colFilterName: string;
+    cssClasses: string;
+    options: any;
+    selectedOption: string;
+    pubSubSubscriber(event: string, handler: Function): Function;
+    pubSubEvent: string;
+}
+
+interface SelectSimpleState {
+    selectedOption: string;
+}
+
+export class SelectSimple extends React.Component<SelectSimpleProps, SelectSimpleState> {
+    unsubscribers = [];
+
+    constructor(props: SelectSimpleProps) {
         super(props);
 
         this.handleChangeSelected = this.handleChangeSelected.bind(this);
@@ -14,7 +29,7 @@ export default class SelectSimple extends React.Component {
     }
 
     componentDidMount() {
-        var unsubscriber = this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
+        const unsubscriber = this.props.pubSubSubscriber(this.props.pubSubEvent, this.handlePubSubClearFilters);
         this.unsubscribers.push(unsubscriber);
     }
 
@@ -31,7 +46,7 @@ export default class SelectSimple extends React.Component {
     }
 
     getSelectReact() {
-        var selectOptions = [];
+        const selectOptions = [];
         this.props.options.o.map((option, i) =>
             selectOptions.push(<option key={'col-filter-' + this.props.colFilterName + '-' + i} value={option.value}>{option.label}</option>));
 
