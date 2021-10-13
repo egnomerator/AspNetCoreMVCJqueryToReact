@@ -6,27 +6,32 @@ import ClearFilters from "./table/ClearFilters";
 
 function renderFooter(container: Element) {
     ReactDOM.render(
-        <FooterMsgPart/>,
+        <FooterMsgPart />,
         container
-    )
+    );
 }
 
 function renderSelect(container: Element, props: SelectSimpleProps) {
     ReactDOM.render(
-        <SelectSimple {...props}/>,
+        <SelectSimple {...props} />,
         container
-    )
+    );
 }
 
 function renderClearFiltersButton(container: Element, props) {
     ReactDOM.render(
-        <ClearFilters {...props}/>,
+        <ClearFilters {...props} />,
         container
-    )
+    );
+}
+
+function removeInMemoryDomNode(container: Element) {
+    ReactDOM.unmountComponentAtNode(container);
 }
 
 const Components = {
-    renderFooter: function (container: Element) { renderFooter(container);},
+    removeInMemoryDomNode: function (container: Element) { removeInMemoryDomNode(container); },
+    renderFooter: function (container: Element) { renderFooter(container); },
     renderSelect: function (
         container: Element,
         colFilterName: string,

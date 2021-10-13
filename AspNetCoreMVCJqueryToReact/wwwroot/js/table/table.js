@@ -41,12 +41,10 @@ function loadTableArea() {
 }
 
 function deleteAllFilters() {
-    $('#columnFiltersContainer')
-        .html(
-            "<div id=\"filter-names\"></div>" +
-            "<div id=\"filter-roles\"></div>" +
-            "<div id=\"filter-jobs\"></div>" +
-            "<div id=\"clearFilters\"></div>");
+    ClientApp.Components.removeInMemoryDomNode(document.getElementById("filter-names"));
+    ClientApp.Components.removeInMemoryDomNode(document.getElementById("filter-roles"));
+    ClientApp.Components.removeInMemoryDomNode(document.getElementById("filter-jobs"));
+    ClientApp.Components.removeInMemoryDomNode(document.getElementById("clearFilters"));
 }
 
 function showHideClearFilters() {

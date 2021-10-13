@@ -7,11 +7,11 @@
 <h1>@Model.Title</h1>
 
 <div class="border border-primary">
-    <a id="reRenderFiltersButton" class="btn text-primary p-0">REFRESH FILTERS AREA - MEMORY LEAK DEMO</a>
+    <a id="reRenderFiltersButton" class="btn text-primary p-0">REFRESH FILTERS AREA - MEMORY LEAK <strong>FIXED</strong> DEMO</a>
     <details>
         <summary>what is this memory leak demo? ...</summary>
         <p></p>
-        <p>This demo is triggered by the above Refresh Link--"REFRESH FILTERS AREA - MEMORY LEAK DEMO"</p>
+        <p>This demo is triggered by the above Refresh Link--"REFRESH FILTERS AREA - MEMORY LEAK FIXED DEMO"</p>
         <ol>
             <li>
                 <p>Open browser dev tools to Components, and open the console</p>
@@ -20,22 +20,19 @@
                 <p>Execute "ClientApp.PubSub.events()" and expand the array to see 2 events with 3 and 1 handlers respectively</p>
             </li>
             <li>
-                <p>Click the Refresh Link one or more times--watch dev tools Components area populate duplicate Components</p>
+                <p>Click the Refresh Link one or more times--watch dev tools Components area <strong>REPLACE</strong> Components</p>
             </li>
             <li>
-                <p>Again, execute "ClientApp.PubSub.events()" and see the 2 events now have more handlers</p>
-            </li>
-            <li>
-                <p>Note that all of the dropdown filtering and clear filters behavior is still working--this is a sneaky bug</p>
+                <p>Again, execute "ClientApp.PubSub.events()" and see the 2 events now have the <strong>SAME COUNT</strong> of handlers</p>
             </li>
         </ol>
-        <p>The Refresh Link EXPECTED behavior</p>
+        <p>The Refresh Link is now working right--fixed by telling React to unmount the components</p>
         <ul>
             <li>
-                <p>should not result in additional components, but should instead REPLACE the existing components</p>
+                <p>Since React had no knowledge of the direct DOM updates React was not removing any components--now it is, resulting in no duplicates</p>
             </li>
             <li>
-                <p>should not result in additional handlers on the PubSub events</p>
+                <p>Since React was not unmounting components, these components could not unsubscribe from events--now they are, resulting in no extra handlers</p>
             </li>
         </ul>
     </details>
