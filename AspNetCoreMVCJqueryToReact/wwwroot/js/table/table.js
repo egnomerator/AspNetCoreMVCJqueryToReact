@@ -20,7 +20,33 @@ function loadTableArea() {
             clearFilters();
             reloadTable();
         });
+
+        $('#reRenderFiltersButton').click(function () {
+            deleteAllFilters();
+            RenderFilterNames(filterOptions.names);
+            RenderFilterRoles(filterOptions.roles);
+            RenderFilterJobs(filterOptions.jobs);
+            RenderClearFilters();
+            $("select.crew-column-filter").change(function () {
+                showHideClearFilters();
+                reloadTable();
+            });
+
+            $('#clearFilters').click(function () {
+                clearFilters();
+                reloadTable();
+            });
+        });
     });
+}
+
+function deleteAllFilters() {
+    $('#columnFiltersContainer')
+        .html(
+            "<div id=\"filter-names\"></div>" +
+            "<div id=\"filter-roles\"></div>" +
+            "<div id=\"filter-jobs\"></div>" +
+            "<div id=\"clearFilters\"></div>");
 }
 
 function showHideClearFilters() {

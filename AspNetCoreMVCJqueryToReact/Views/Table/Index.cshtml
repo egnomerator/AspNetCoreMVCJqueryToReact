@@ -6,12 +6,50 @@
 
 <h1>@Model.Title</h1>
 
+<div class="border border-primary">
+    <a id="reRenderFiltersButton" class="btn text-primary p-0">REFRESH FILTERS AREA - MEMORY LEAK DEMO</a>
+    <details>
+        <summary>what is this memory leak demo? ...</summary>
+        <p></p>
+        <p>This demo is triggered by the above Refresh Link--"REFRESH FILTERS AREA - MEMORY LEAK DEMO"</p>
+        <ol>
+            <li>
+                <p>Open browser dev tools to Components, and open the console</p>
+            </li>
+            <li>
+                <p>Execute "ClientApp.PubSub.events()" and expand the array to see 2 events with 3 and 1 handlers respectively</p>
+            </li>
+            <li>
+                <p>Click the Refresh Link one or more times--watch dev tools Components area populate duplicate Components</p>
+            </li>
+            <li>
+                <p>Again, execute "ClientApp.PubSub.events()" and see the 2 events now have more handlers</p>
+            </li>
+            <li>
+                <p>Note that all of the dropdown filtering and clear filters behavior is still working--this is a sneaky bug</p>
+            </li>
+        </ol>
+        <p>The Refresh Link EXPECTED behavior</p>
+        <ul>
+            <li>
+                <p>should not result in additional components, but should instead REPLACE the existing components</p>
+            </li>
+            <li>
+                <p>should not result in additional handlers on the PubSub events</p>
+            </li>
+        </ul>
+    </details>
+</div>
+
+
 <div class="form-inline">
     <div>Column Filters</div>
-    <div id="filter-names"></div>
-    <div id="filter-roles"></div>
-    <div id="filter-jobs"></div>
-    <div id="clearFilters">Clear Filters</div>
+    <div id="columnFiltersContainer" class="form-inline">
+        <div id="filter-names"></div>
+        <div id="filter-roles"></div>
+        <div id="filter-jobs"></div>
+        <div id="clearFilters"></div>
+    </div>
 </div>
 
 <table id="table" class="table table-striped">

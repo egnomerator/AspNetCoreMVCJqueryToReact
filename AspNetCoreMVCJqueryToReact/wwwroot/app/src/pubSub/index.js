@@ -36,7 +36,8 @@ var messageBroker = {
 var PubSub = {
     eventRegister: eventRegister,
     subscribe: function (eventName, subscriber) { return messageBroker.subscribe(eventName, subscriber); },
-    publish: function (eventName, data) { messageBroker.publish(eventName, data); }
+    publish: function (eventName, data) { messageBroker.publish(eventName, data); },
+    events: function () { return messageBroker.events; }
 };
 
 export default PubSub;
