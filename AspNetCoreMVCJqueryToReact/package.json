@@ -8,7 +8,7 @@
     "test": "npm run typescheck && jest",
     "devw": "npm run tscwatch -- --onSuccess \"webpack --mode=development\"",
     "testw": "npm run tscwatch -- --onSuccess jest",
-    "tscwatch": "./node_modules/.bin/tsc-watch",
+    "tscwatch": "./node_modules/.bin/tsc-watch -p ./tsconfig.json",
     "typescheck": "tsc -p ./tsconfig.json",
     "typesemit": "tsc -p ./tsconfig.types.json",
     "tconf": "tsc -p ./tsconfig.json --showConfig",
