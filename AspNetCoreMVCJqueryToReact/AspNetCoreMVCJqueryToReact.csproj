@@ -9,6 +9,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\app\dist\bundle\bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\app\dist\bundle\vendors.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <Target Name="NpmCI" Inputs="package.json" Outputs="node_modules/.install-stamp">
     <Exec Command="npm ci" />
     <!-- Write the stamp file, so incremental builds work -->
