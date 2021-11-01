@@ -5,7 +5,7 @@ module.exports = (env, argv) => {
     var config = {
         context: appPath,
         entry: {
-            bundle: [ "./wwwroot/app/src/index.js" ]
+            bundle: ["./wwwroot/app/src/index.js"]
         },
         output: {
             clean: true,
@@ -33,8 +33,17 @@ module.exports = (env, argv) => {
                 {
                     test: /\.(ts|js)x?$/,
                     exclude: /node_modules/,
+                    use: { loader: "babel-loader" }
+                },
+                {
+                    test: /\.(ts|js)x?$/,
+                    include: /[\\/]wwwroot[\\/]app[\\/]src[\\/]index/,
                     use: {
-                        loader: "babel-loader"
+                        loader: "webpack-strip-block",
+                        options: {
+                            start: "webpack-strip-code-block:start",
+                            end: "webpack-strip-code-block:end"
+                        }
                     }
                 }
             ]
