@@ -6,6 +6,8 @@
     "isolatedModules": true,
     "jsx": "react",
     "noImplicitAny": false,
-    "removeComments": false
+    "removeComments": false,
+    "module": "ES2015",
+    "moduleResolution": "Node"
   }
 }
